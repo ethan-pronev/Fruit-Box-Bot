@@ -82,12 +82,18 @@ def playGame():
 
 		# read from C++ generated file and make moves
 		file = open("output-moves","r")
+		score = int(file.readline()) # score is on first line of file
+		if score <= 155:
+			continue
 		for line in file.readlines():
 			nums = line.split(' ')
 			selectRect(int(nums[0]),int(nums[1]),int(nums[2]),int(nums[3]))
 		file.close()
 
 		time.sleep(5)
+
+		highScore = bot.screenshot('highscore.png')
+		break
 
 
 
